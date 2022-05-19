@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Import style -->
+  <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css" />
+  <!-- Import Vue 3 -->
+  <script src="https://unpkg.com/vue@next"></script>
+  <!-- Import component library -->
+  <script src="https://unpkg.com/element-plus"></script>
+</head>
+	<div id="app">
+		<el-card>
+			<template #header>
+				技能(依常用排序)
+			</template>
+			 <el-tree :data="kills" :props="defaultProps" @node-click="handleNodeClick" :default-expand-all="true"/>
+		</el-card>
+	</div>
+	<script>
+	
+		const defaultProps = {
+		  children: 'children',
+		  label: 'label',
+		}
+	
+		const App = {
+			data() {
+			  return {
+				kills:[
+					{
+						label: '資料庫',
+						children:[
+							{label: 'Oracel'}, {label:'Mssql'}, {label:'MySql'}, {label: 'Mongodb'}
+						]
+					},
+					{
+						label: 'ORM',
+						children:[
+							{label:'Dapper'}, {label:'Entity Framework'}, {label: 'odbc'}, {label: 'Hibernate'}
+						]
+					},
+					{
+						label: '程式語言',
+						children:[
+							{label:'C#'}, {label:'Javascript'}, {label: 'Java'}, {label: 'VB.net'}
+						]
+					},
+					{
+						label: '後端程式架構',
+						children:[
+							{label:'.net framework'},
+							{label:'.net Core'}, 
+							{label: 'node'},
+							{label: 'VB.net'}
+						]
+					},
+					{
+						label: '前端程式架構',
+						children:[
+							{label:'vue3 + vue-router + element-plus'},
+							{label:'vue3 + vue-router + MVC router + razor 混用'}, 
+							{label:'razor + jquery + bootstrap'},
+						]
+					},
+					{
+						label: '其他',
+						children:[
+							{label:'azure'},
+						]
+					}
+				],
+				defaultProps
+			  };
+			},
+		  };
+		  const app = Vue.createApp(App);
+		  app.use(ElementPlus);
+		  app.mount("#app");
+	</script>
+</html>
